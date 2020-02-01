@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour, InputMaster.IPlayer1Actions
         Vector2 input = context.ReadValue<Vector2>();
         //transform.Rotate(new Vector3(delta.x, delta.y, 0) * Time.deltaTime);
 
-        float heading = Mathf.Atan2(input.x, input.y);
+        float heading = Mathf.Atan2(-input.x, input.y);
         Debug.Log(input.x);
         Debug.Log(input.y);
         transform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);

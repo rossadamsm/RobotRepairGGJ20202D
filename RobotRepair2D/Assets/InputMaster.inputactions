@@ -7,17 +7,17 @@
             "actions": [
                 {
                     "name": "Movement",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "cf93f7b6-e535-4fd8-9a4c-c85703e4b3ee",
-                    "expectedControlType": "",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Looking",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "4960be4b-9069-41fa-bf96-3b7f9b0e635c",
-                    "expectedControlType": "",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -88,6 +88,61 @@
                     "action": "Looking",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "RightStick",
+                    "id": "f95f3506-370a-47b2-b8f9-6f9a53116973",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Looking",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "454161aa-4783-486e-a6a5-9d6672a195e9",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "Looking",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "297c4017-f0ba-45d8-8fde-00cf8531c464",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "Looking",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "b7cd1d37-4939-4c61-a980-0c1ffc1b5cfb",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "Looking",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e5d91862-e899-4d7c-a018-1e12d697fa5a",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "Looking",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
