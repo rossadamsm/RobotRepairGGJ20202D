@@ -32,6 +32,7 @@ public class EnemySpawnController : MonoBehaviour
         if (currentWaveTime <= 0) {
             currentWaveTime = waveTime;
             Spawn();
+            currentWaveCount++;
         }
 
         if (currentWaveTime > 0) {
@@ -43,7 +44,7 @@ public class EnemySpawnController : MonoBehaviour
 
     void Spawn() {
         float spawnTotal = 10;
-        for (int i = 0; i < spawnTotal; i++) {
+        for (int i = 0; i < (spawnTotal * currentWaveCount); i++) {
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(transform.position.x + Random.Range(1,5), transform.position.y + Random.Range(1,5), transform.position.z),Quaternion.identity);
         }
     }

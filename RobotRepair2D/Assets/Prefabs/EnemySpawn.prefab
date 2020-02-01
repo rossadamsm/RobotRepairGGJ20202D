@@ -127,8 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPerWave: 3
   spawnIncreaseRate: 0
-  waveTime: 60
+  waveTime: 10
   enemyPrefab: {fileID: 6252328610186743298, guid: 27d882c8cac579346b3a8d05e9ce35b3,
     type: 3}
   currentWaveCount: 1
   currentWaveTime: 0
+  waveInfo: {fileID: 0}
