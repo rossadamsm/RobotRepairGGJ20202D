@@ -45,16 +45,18 @@ public class PlayerController : MonoBehaviour
         gamePad2 = otherInputUser.pairedDevices[0] as Gamepad;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (gamePad1 == null || gamePad2 == null) return;
 
         if (!playerDisabled)
             move = gamePad1.leftStick.ReadValue();
+        else
+            move = Vector2.zero;
 
         rotate = gamePad2.rightStick.ReadValue();
 
-        Vector2 m = new Vector2(move.x, move.y) * moveSpeed * Time.deltaTime;
+        Vector2 m = new Vector2(move.x, move.y) * moveSpeed * Time.fixedDeltaTime;
         transform.Translate(m, Space.World);
         
         AnimateCharacter();
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
         Shoot();
 
         if (canFire == false)
-            firingDelayTimer += Time.deltaTime;
+            firingDelayTimer += Time.fixedDeltaTime;
 
         if (firingDelayTimer >= firingDelay)
         {
@@ -105,6 +107,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(gameObject.name + " fired");
             Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivot.position, Quaternion.identity);
+            bullet.tag = gameObject.tag;
             bullet.Shoot(firingPivot.right);
             canFire = false;
         }

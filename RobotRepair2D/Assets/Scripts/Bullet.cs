@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == gameObject.tag) { Debug.Log("ignored myself bullet"); return; }
+
         Debug.Log("Bullet hit " + collision.gameObject.name);
         Destroy(gameObject);    
     }

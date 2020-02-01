@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == gameObject.tag) { Debug.Log("ignored myself player"); return; }
+
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Bullet")
         {
             currentHealth--;
