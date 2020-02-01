@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //Ensures there is only ever one in the scene
-        if (Instance != null)
+        if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
