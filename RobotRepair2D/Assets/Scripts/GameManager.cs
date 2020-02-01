@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public float finalScore = 0;
 
     private int shipScrapCollected;
-    private int currentScrapCount;
+    public int currentScrapCount { get; private set; }
 
     [SerializeField] LevelInfo[] levelInfos;
 

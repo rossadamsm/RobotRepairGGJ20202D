@@ -25,7 +25,7 @@ public class TowerBuildController : MonoBehaviour
     {
         if (Input.GetKeyDown(towerHotkey))
         {
-            if (ScrapCollector.scrapCount >= 10)
+            if (GameManager.Instance.currentScrapCount >= 10)
             {
                 if (currentTower != null)
                 {
@@ -53,10 +53,9 @@ public class TowerBuildController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //The tower is being built here, subtract resource count then "place" the tower
-            if (ScrapCollector.ScrapCount >= towerCost)
+            if (GameManager.Instance.currentScrapCount >= towerCost)
             {
-                ScrapCollector.scrapCount -= towerCost;
-                GameManager.Instance.AddScrap()
+                GameManager.Instance.AddScrap(-towerCost);
                 currentTower.GetComponent<Tower>().isActivated = true;
                 currentTower = null;
             }
