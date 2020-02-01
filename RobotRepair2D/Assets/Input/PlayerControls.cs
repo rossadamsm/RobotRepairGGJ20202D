@@ -57,6 +57,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d28657a3-aa01-4e5e-b00a-640324768112"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9e1f6f70-fda2-48c3-8220-f0dd820a7170"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
@@ -65,6 +76,61 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""KeyboardMove"",
+                    ""id"": ""f93c1574-024e-471e-8ebb-62bccbd45cad"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""4f1e0ad1-3f0d-4659-aec7-cab510c8211b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b3228add-7276-4a0e-8939-91006243828a"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""592a3c1f-5912-4c89-9329-98be7fbcb1b9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4ac43b6f-d012-415a-80a6-12315a2c5cc2"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -76,44 +142,61 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Player2"",
-            ""id"": ""3bbcbd0b-ed11-4f8a-914e-6250617fa1eb"",
-            ""actions"": [
+                },
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""5ebd12f1-71f2-4782-8249-c3579fdf0032"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""287cfb2f-df8b-44f7-b0d3-5d9c21ef7e17"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""name"": ""LookAround"",
+                    ""id"": ""ce9282a9-e239-4a76-bb33-92a551615759"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""6667f657-216e-4d10-8fca-a108969a7cac"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""name"": ""up"",
+                    ""id"": ""73e0093f-97ae-43ef-bd0c-6551234c505a"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4Controller"",
-                    ""action"": ""New action"",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""857f3098-dfc2-41c6-875a-a7571293d4b3"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ee7fb759-e1a4-4118-859b-40051057c6ab"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""821140f8-57b9-4e7e-94d4-06d4f81e1079"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -137,9 +220,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player1_Fire = m_Player1.FindAction("Fire", throwIfNotFound: true);
         m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
         m_Player1_Rotate = m_Player1.FindAction("Rotate", throwIfNotFound: true);
-        // Player2
-        m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
-        m_Player2_Newaction = m_Player2.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -234,39 +314,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public Player1Actions @Player1 => new Player1Actions(this);
-
-    // Player2
-    private readonly InputActionMap m_Player2;
-    private IPlayer2Actions m_Player2ActionsCallbackInterface;
-    private readonly InputAction m_Player2_Newaction;
-    public struct Player2Actions
-    {
-        private @PlayerControls m_Wrapper;
-        public Player2Actions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Player2_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Player2; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player2Actions set) { return set.Get(); }
-        public void SetCallbacks(IPlayer2Actions instance)
-        {
-            if (m_Wrapper.m_Player2ActionsCallbackInterface != null)
-            {
-                @Newaction.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnNewaction;
-            }
-            m_Wrapper.m_Player2ActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-            }
-        }
-    }
-    public Player2Actions @Player2 => new Player2Actions(this);
     private int m_PS4ControllerSchemeIndex = -1;
     public InputControlScheme PS4ControllerScheme
     {
@@ -281,9 +328,5 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
-    }
-    public interface IPlayer2Actions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
     }
 }
