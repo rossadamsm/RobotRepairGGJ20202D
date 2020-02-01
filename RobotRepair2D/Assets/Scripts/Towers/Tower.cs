@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Tower : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Tower : MonoBehaviour
 
     public Enemy targettedEnemy;
     public GameObject targettedEnemyGameObject;
+
+    public bool findingNewTarget = false;
 
     // Update is called once per frame
     void Update()
@@ -30,7 +34,7 @@ public class Tower : MonoBehaviour
 
         if (cooldown <= 0 && targettedEnemy == null)
         {
-            GetNewTarget();
+            findingNewTarget = true;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -56,24 +60,31 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void GetNewTarget()
+    void FixedUpdate()
     {
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
-        float smallestDistance = 99999999f;
-        int smallestIndex = -1;
-        for (int i = 0; i < gos.Length; i++)
+        if (findingNewTarget)
         {
-            //Find the closest one
-            float distance = Vector3.Distance(transform.position, gos[i].transform.position);
-            if (distance < smallestDistance)
+            Collider2D[] results = new Collider2D[100];
+            Physics2D.OverlapCircleNonAlloc(transform.position, 4, results);
+
+            if (results.Length > 0)
             {
-                smallestDistance = distance;
-                smallestIndex = i;
+                for (int i = 0; i < results.Length; i++)
+                {
+                    targettedEnemyGameObject = results[i].gameObject;
+                    targettedEnemy = targettedEnemyGameObject.GetComponent<Enemy>();
+                    if (targettedEnemy == null)
+                    {
+                        targettedEnemy = null;
+                        targettedEnemyGameObject = null;
+                    }
+                    else
+                    {
+                        findingNewTarget = false;
+                        return;
+                    }
+                }
             }
-        }
-        if (smallestIndex != -1) {
-            targettedEnemyGameObject = gos[smallestIndex];
-            targettedEnemy = targettedEnemyGameObject.GetComponent<Enemy>();
         }
     }
 }

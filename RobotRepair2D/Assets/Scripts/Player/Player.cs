@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public TextMeshProUGUI mesh;
     public int scrapCount;
+    public float hp = 100f;
 
     // Update is called once per frame
     void Update()
