@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -8,6 +10,13 @@ public class EnemyAI : MonoBehaviour
     public int damage = 1;
     public float attackSpeed = 1f;
     public float cooldown = 0f;
+    private PlayerController[] players;
+
+    private void Awake()
+    {
+        players = FindObjectsOfType<PlayerController>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -49,12 +58,15 @@ public class EnemyAI : MonoBehaviour
 
     void FindPlayers()
     {
-        PlayerController[] gos = FindObjectsOfType<PlayerController>();
+        //Made it so it only considers nondisabled players as valid targets (prevents it just sitting on an already disabled player)
+        List<PlayerController> validPlayers = new List<PlayerController>();
+        validPlayers = players.Where(x => !x.PlayerDisabled).ToList();
+
         float closestDistance = 999999f;
         int closestDistanceIndex = -1;
-        for (int i = 0; i < gos.Length; i++)
+        for (int i = 0; i < validPlayers.Count; i++)
         {
-            float curDist = Vector3.Distance(transform.position, gos[i].transform.position);
+            float curDist = Vector3.Distance(transform.position, validPlayers[i].transform.position);
             if (curDist < closestDistance)
             {
                 closestDistance = curDist;
@@ -63,7 +75,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (closestDistanceIndex != -1)
         {
-            target = gos[closestDistanceIndex].gameObject;
+            target = validPlayers[closestDistanceIndex].gameObject;
         }
     }
 }

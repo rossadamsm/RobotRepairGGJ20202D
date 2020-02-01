@@ -1,13 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
+    public static event Action enemyDied; 
+
     public int droppedScrapCount = 10;
     public GameObject scrapPrefab;
     public bool isDying = false;
     public float hp = 10;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+            Die();
+    }
 
     public void TakeDamage(int amount)
     {
@@ -27,6 +37,7 @@ public class Enemy : MonoBehaviour, IDamagable
             scrap.GetComponent<Scrap>().explodeFromEnemy(endPos);
         }
         Destroy(gameObject);
+        enemyDied?.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     float firingDelayTimer = 0;
     private Animator animator;
 
-    [HideInInspector] public bool playerDisabled = false;
+    [HideInInspector] public bool PlayerDisabled = false;
 
     private void Awake()
     {
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gamePad1 == null || gamePad2 == null) return;
 
-        if (!playerDisabled)
+        if (!PlayerDisabled)
             move = gamePad1.leftStick.ReadValue();
         else
             move = Vector2.zero;

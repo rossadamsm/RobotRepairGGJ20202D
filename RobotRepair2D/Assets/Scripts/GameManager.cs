@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private int currentLevelIndex = -1;
     private float scoreMult;
     private EnemySpawnController enemySpawnController;
+    private int currentEnemyCount;
+    private PlayerController[] playerControllers;
 
     private void Awake()
     {
@@ -30,6 +32,42 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         enemySpawnController = FindObjectOfType<EnemySpawnController>();
+        playerControllers = FindObjectsOfType<PlayerController>();
+    }
+
+    private void OnEnable()
+    {
+        Enemy.enemyDied += Enemy_enemyDied;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.enemyDied -= Enemy_enemyDied;
+    }
+
+    private void Update()
+    {
+        if (playerControllers[0].PlayerDisabled && playerControllers[1].PlayerDisabled)
+        {
+            EndGame(false);
+        }
+    }
+
+    private void Enemy_enemyDied()
+    {
+        currentEnemyCount--;
+
+        if (currentEnemyCount <= 0)
+        {
+            Debug.Log("All Enemies Dead");
+            StartCoroutine(LoadLevelAfterX());
+        }
+    }
+
+    private IEnumerator LoadLevelAfterX()
+    {
+        yield return new WaitForSeconds(4f);
+        MoveToNextLevel();
     }
 
     /// <summary>
@@ -57,7 +95,8 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.ScrapTotalText.SetText($"Scrap: 0");
 
         //Spawn Next Wave of Enemies
-        enemySpawnController.SpawnEnemies(currentLevelInfo.NoEnemiesToSpawn);
+        currentEnemyCount = currentLevelInfo.NoEnemiesToSpawn;
+        enemySpawnController.SpawnEnemies(currentEnemyCount);
     }
 
     public void AddScrap(int scrapCount)
@@ -74,5 +113,16 @@ public class GameManager : MonoBehaviour
         scoreMult += Mathf.Floor(scrapCount / 100);
         finalScore = score * scoreMult;
         UIManager.Instance.ScoreText.SetText(finalScore.ToString());
+    }
+
+    public void EndGame(bool completed)
+    {
+        if (completed)
+            Debug.Log("Game Completed!");
+        else
+        {
+            Debug.Log("Game Failed");
+        }
+        //Load Final Scene (a bad version?)
     }
 }

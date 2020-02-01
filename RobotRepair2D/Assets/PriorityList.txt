@@ -1,0 +1,23 @@
+-- Priority List In Orderof NB --
+
+- Add end game condition
+- Create/Pull in intro scene
+- Create/Pull in end scene
+- Load Levels correctly (Intro/Game/End)
+- Integrate Audio System
+- Attack animation/effect for enemies
+- Make player bullets look cooler
+- Add a sprite for a damaged/disable player
+- Add a particle effect (like dizzy thing maybe/ or sparks) for a robot that is disabled
+- Create second Enemy type
+	- Firing Mode
+	- Different AI
+- Do AWS Scoring System
+- Add PowerUps
+
+- Create a restart game from last scene (have to watch out for static variables)
+
+
+--- Complete ---
+- Player Movement
+- Player Aiming and shooting

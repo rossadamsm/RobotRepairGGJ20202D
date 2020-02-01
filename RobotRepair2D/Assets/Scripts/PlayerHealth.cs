@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     {
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
         {
-            if (playerController.playerDisabled)
+            if (playerController.PlayerDisabled)
             {
                 ReEnablePlayer();
             }
@@ -31,13 +31,13 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     private void ReEnablePlayer()
     {
         currentHealth = maxHealth;
-        playerController.playerDisabled = false;
+        playerController.PlayerDisabled = false;
         AudioSource.PlayClipAtPoint(repairedClip, transform.position);
     }
 
     private void DisablePlayer()
     {
-        playerController.playerDisabled = true;
+        playerController.PlayerDisabled = true;
     }
 
     public void TakeDamage(int amount)

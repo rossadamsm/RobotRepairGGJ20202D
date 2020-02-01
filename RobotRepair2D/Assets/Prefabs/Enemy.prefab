@@ -175,7 +175,7 @@ MonoBehaviour:
   scrapPrefab: {fileID: 3048758595981167510, guid: 7315a4ac926d2ca4a95f1cd8ca2a33f2,
     type: 3}
   isDying: 0
-  hp: 10
+  hp: 2
 --- !u!61 &6723134138093213065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   moveSpeed: 20
-  attackRange: 10
+  attackRange: 15
   damage: 1
   attackSpeed: 1
   cooldown: 0
