@@ -7,8 +7,7 @@ TagManager:
   - Enemy
   - Scrap
   - Transition
-  - Player1
-  - Player2
+  - Spawner
   layers:
   - Default
   - TransparentFX
