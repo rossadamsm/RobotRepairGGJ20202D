@@ -8,8 +8,18 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int score = 0;
-    public float scoreMult = 1;
+    public int ShipScrapTotalRequired = 300;
     public float finalScore = 0;
+
+    private int shipScrapCollected;
+    private int currentScrapCount;
+
+    [SerializeField] LevelInfo[] levelInfos;
+
+    private LevelInfo currentLevelInfo;
+    private int currentLevelIndex = -1;
+    private float scoreMult;
+    private EnemySpawnController enemySpawnController;
 
     private void Awake()
     {
@@ -18,15 +28,51 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        enemySpawnController = FindObjectOfType<EnemySpawnController>();
+    }
+
+    /// <summary>
+    /// Manages all the things that need to change between levels.
+    /// Note that the first level is started from the MyPlayersManager class, when both controllers have been detected.
+    /// </summary>
+    public void MoveToNextLevel()
+    {
+        currentLevelIndex++;
+
+        if (currentLevelIndex >= levelInfos.Length)
+        {
+            Debug.Log("All levels complete");
+            return;
+        }
+
+        currentLevelInfo = levelInfos[currentLevelIndex];
+
+        // Add Scrap to ShipTotal repair
+        shipScrapCollected += currentScrapCount;
+        currentScrapCount = 0;
+
+        //Update Game Progress UI
+        UIManager.Instance.ShipRepairStatusText.SetText($"Ship Health : {shipScrapCollected}/{ShipScrapTotalRequired}");
+        UIManager.Instance.ScrapTotalText.SetText($"Scrap: 0");
+
+        //Spawn Next Wave of Enemies
+        enemySpawnController.SpawnEnemies(currentLevelInfo.NoEnemiesToSpawn);
+    }
+
+    public void AddScrap(int scrapCount)
+    {
+        currentScrapCount += scrapCount;
+        UIManager.Instance.ScrapTotalText.SetText($"Scrap: {currentScrapCount} ");
+        PoolToHighScore(scrapCount);
     }
 
 
-    public void PoolToHighScore(int scrapCount)
+    private void PoolToHighScore(int scrapCount)
     {
         score += scrapCount;
         scoreMult += Mathf.Floor(scrapCount / 100);
         finalScore = score * scoreMult;
-        UIManager.Instance.score.SetText(finalScore.ToString());
-        UIManager.Instance.scrapTotal.SetText($"Scrap: 0");
+        UIManager.Instance.ScoreText.SetText(finalScore.ToString());
     }
 }

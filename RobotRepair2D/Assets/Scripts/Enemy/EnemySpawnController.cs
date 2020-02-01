@@ -33,7 +33,7 @@ public class EnemySpawnController : MonoBehaviour
             currentWaveTime -= Time.deltaTime;
         }
 
-        UIManager.Instance.waveInfo.SetText($"Wave: {currentWaveCount}\n Time: {currentWaveTime.ToString("0.00")}s");
+        UIManager.Instance.WaveInfoText.SetText($"Wave: {currentWaveCount}\n Time: {currentWaveTime.ToString("0.00")}s");
     }
 
     void Spawn()
@@ -59,5 +59,11 @@ public class EnemySpawnController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SpawnEnemies(int noOfEnemies)
+    {
+        //TODO
+        Debug.Log($"TODO - spawn {noOfEnemies} enemies");
     }
 }

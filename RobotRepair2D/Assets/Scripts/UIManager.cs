@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public TextMeshProUGUI scrapTotal, waveInfo, score;
+    public TextMeshProUGUI ScrapTotalText, WaveInfoText, ScoreText, ShipRepairStatusText;
 
     private void Awake()
     {

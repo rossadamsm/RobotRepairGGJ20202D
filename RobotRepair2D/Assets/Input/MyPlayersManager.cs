@@ -59,7 +59,7 @@ public class MyPlayersManager : MonoBehaviour
         playerControllers[1].RegisterControls(_users[1], _users[0]);
 
 
-        Debug.Log("Registered Players");
+        GameManager.Instance.MoveToNextLevel(); // Moves into first level once both controllers have been detected!
     }
 
     void OnControlsChanged(InputUser user, InputUserChange change, InputDevice device)
