@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     public int droppedScrapCount = 10;
     public GameObject scrapPrefab;
     public bool isDying = false;
     public float hp = 10;
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int amount)
     {
-        
+        hp -= amount;
+        if (hp <= 0)
+            Die();
     }
 
-    public void Die() {
+    public void Die()
+    {
         isDying = true;
-        for (int i = 0; i < droppedScrapCount; i++) {
+        for (int i = 0; i < droppedScrapCount; i++)
+        {
             Vector3 startPos = transform.position;
             Vector3 endPos = new Vector3(transform.position.x + Random.Range(1, 5), transform.position.y + Random.Range(1, 5), transform.position.z);
             GameObject scrap = Instantiate(scrapPrefab, startPos, Quaternion.identity);
@@ -28,8 +31,9 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player p = collision.gameObject.GetComponent<Player>();
-        if (p != null) {
+        ScrapCollector p = collision.gameObject.GetComponent<ScrapCollector>();
+        if (p != null)
+        {
             Die();
         }
     }

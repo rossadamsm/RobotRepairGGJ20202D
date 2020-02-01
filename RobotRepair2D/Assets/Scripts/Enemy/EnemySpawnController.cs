@@ -16,17 +16,7 @@ public class EnemySpawnController : MonoBehaviour
     public int currentWaveCount = 1;
     public float currentWaveTime = 0;
 
-
-
-    public TextMeshProUGUI waveInfo;
-
-    public GameManager manager;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+    //public TextMeshProUGUI waveInfo;
 
     // Update is called once per frame
     void Update()
@@ -41,18 +31,18 @@ public class EnemySpawnController : MonoBehaviour
             currentWaveTime -= Time.deltaTime;
         }
 
-        waveInfo.SetText($"Wave: {currentWaveCount}\n Time: {currentWaveTime.ToString("0.00")}s");
+        UIManager.Instance.waveInfo.SetText($"Wave: {currentWaveCount}\n Time: {currentWaveTime.ToString("0.00")}s");
     }
 
     void Spawn() {
-        GameObject[] obs = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject go in obs) {
-            Player p = go.GetComponent<Player>();
-            if (p != null) {
-                manager.PoolToHighScore(p.scrapCount);
-                p.scrapCount = 0;
-            }
-        }
+        //GameObject[] obs = GameObject.FindGameObjectsWithTag("Player");
+        //foreach(GameObject go in obs) {
+        //    ScrapCollector p = go.GetComponent<ScrapCollector>();
+        //    if (p != null) {
+        //        GameManager.Instance.PoolToHighScore(p.ScrapCount);
+        //        p.ScrapCount = 0;
+        //    }
+        //}
         int toSpawn = spawnPerWave * currentWaveCount;
         for (int i = 0; i < (spawnPerWave * currentWaveCount); i++) {
             foreach (GameObject spawner in GameObject.FindGameObjectsWithTag("Spawner")) {

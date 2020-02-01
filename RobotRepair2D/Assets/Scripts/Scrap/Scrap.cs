@@ -23,11 +23,11 @@ public class Scrap : MonoBehaviour
             float distance = Vector3.Distance(transform.position, attractTarget.transform.position);
             if (distance < attractMinDistance)
             {
-                Player p = attractTarget.GetComponent<Player>();
+                ScrapCollector p = attractTarget.GetComponent<ScrapCollector>();
                 if (p != null) {
                     isAttracting = false;
-                    p.scrapCount += scrapCount;
-                    p.mesh.SetText($"Scrap: {p.scrapCount}");
+                    ScrapCollector.ScrapCount += scrapCount;
+                    //p.mesh.SetText($"Scrap: {p.scrapCount}");
                     Destroy(gameObject);
                 }
             }

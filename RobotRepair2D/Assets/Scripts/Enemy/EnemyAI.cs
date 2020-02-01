@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -38,9 +36,9 @@ public class EnemyAI : MonoBehaviour
         if (cooldown <= 0 && target) {
             cooldown = attackSpeed;
             float distance = Vector3.Distance(transform.position, target.transform.position);
-            if (distance < attackRange) {
-                target.GetComponent<Player>().hp -= damage;
-            }
+            //if (distance < attackRange) {
+            //    target.GetComponent<ScrapCollector>().hp -= damage;
+            //}
         }
         if (cooldown > 0) {
             cooldown -= Time.deltaTime;

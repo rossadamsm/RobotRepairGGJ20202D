@@ -5,30 +5,28 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     public int score = 0;
     public float scoreMult = 1;
     public float finalScore = 0;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI scrapCountText;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
+        //Ensures there is only ever one in the scene
+        if (Instance != null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void PoolToHighScore(int scrapCount)
     {
         score += scrapCount;
         scoreMult += Mathf.Floor(scrapCount / 100);
         finalScore = score * scoreMult;
-        scoreText.SetText(finalScore.ToString());
-        scrapCountText.SetText($"Scrap: 0");
+        UIManager.Instance.score.SetText(finalScore.ToString());
+        UIManager.Instance.scrapTotal.SetText($"Scrap: 0");
     }
 }

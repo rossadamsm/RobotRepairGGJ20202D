@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamagable
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private AudioClip damagedClip, repairedClip;
@@ -15,20 +15,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         playerController = GetComponent<PlayerController>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == gameObject.tag) { Debug.Log("ignored myself player"); return; }
-
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Bullet")
-        {
-            currentHealth--;
-            AudioSource.PlayClipAtPoint(damagedClip, transform.position);
-
-            if (currentHealth <= 0)
-                DisablePlayer();
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,5 +38,14 @@ public class PlayerHealth : MonoBehaviour
     private void DisablePlayer()
     {
         playerController.playerDisabled = true;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth-= amount;
+        AudioSource.PlayClipAtPoint(damagedClip, transform.position);
+
+        if (currentHealth <= 0)
+            DisablePlayer();
     }
 }
