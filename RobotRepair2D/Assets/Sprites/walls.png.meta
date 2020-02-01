@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: e49048218547047e1af00a5fd40918a5
+guid: a61d2dec5eba44e1abefea6e9794bcdf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5807110336295036272
-    second: terrain_tiles_0
+      213: -8185252286816643056
+    second: walls_0
   - first:
-      213: -2200409185153861728
-    second: terrain_tiles_1
+      213: 4723250963254362342
+    second: walls_1
   - first:
-      213: 4970902051345115763
-    second: terrain_tiles_2
+      213: 2029603016695656400
+    second: walls_2
   - first:
-      213: 3976838586967460034
-    second: terrain_tiles_3
+      213: 8147275610191718606
+    second: walls_3
   - first:
-      213: 6501780572968073555
-    second: terrain_tiles_4
+      213: -24075806118037059
+    second: walls_4
   - first:
-      213: -8831859428154683160
-    second: terrain_tiles_5
+      213: -4818650310412941511
+    second: walls_5
   - first:
-      213: -5235144582610034658
-    second: terrain_tiles_6
+      213: -1031414003539726126
+    second: walls_6
   - first:
-      213: -4661044180406968755
-    second: terrain_tiles_7
-  - first:
-      213: 3961036716041834816
-    second: terrain_tiles_8
+      213: 1115358595779141345
+    second: walls_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -90,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +99,31 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: terrain_tiles_0
+      name: walls_0
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +148,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09a92a1aaeff86fa0800000000000000
-      internalID: -5807110336295036272
+      spriteID: 01817579964286e80800000000000000
+      internalID: -8185252286816643056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_1
+      name: walls_1
       rect:
         serializedVersion: 2
         x: 16
@@ -148,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a7b56e11839671e0800000000000000
-      internalID: -2200409185153861728
+      spriteID: 6e04cc9e9bb5c8140800000000000000
+      internalID: 4723250963254362342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_2
+      name: walls_2
       rect:
         serializedVersion: 2
         x: 32
@@ -169,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37aafa724113cf440800000000000000
-      internalID: 4970902051345115763
+      spriteID: 0dfa43db0399a2c10800000000000000
+      internalID: 2029603016695656400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_3
+      name: walls_3
       rect:
         serializedVersion: 2
         x: 0
@@ -190,35 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c80349ef91903730800000000000000
-      internalID: 3976838586967460034
+      spriteID: ec86ea85000f01170800000000000000
+      internalID: 8147275610191718606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_4
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3593c43bbf6fa3a50800000000000000
-      internalID: 6501780572968073555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terrain_tiles_5
+      name: walls_4
       rect:
         serializedVersion: 2
         x: 32
@@ -232,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e0d7aea4aeee6580800000000000000
-      internalID: -8831859428154683160
+      spriteID: db937a09e277aaff0800000000000000
+      internalID: -24075806118037059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_6
+      name: walls_5
       rect:
         serializedVersion: 2
         x: 0
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e10e7b53db70957b0800000000000000
-      internalID: -5235144582610034658
+      spriteID: 937c20fa217b02db0800000000000000
+      internalID: -4818650310412941511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_7
+      name: walls_6
       rect:
         serializedVersion: 2
         x: 16
@@ -274,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4ed0706305a05fb0800000000000000
-      internalID: -4661044180406968755
+      spriteID: 2d0b6aead6eafa1f0800000000000000
+      internalID: -1031414003539726126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_tiles_8
+      name: walls_7
       rect:
         serializedVersion: 2
         x: 32
@@ -295,8 +295,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04114f128ed68f630800000000000000
-      internalID: 3961036716041834816
+      spriteID: 1ee1892cbbc8a7f00800000000000000
+      internalID: 1115358595779141345
       vertices: []
       indices: 
       edges: []
