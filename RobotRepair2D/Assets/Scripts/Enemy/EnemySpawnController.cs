@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawnController : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class EnemySpawnController : MonoBehaviour
 
     public int currentWaveCount = 1;
     public float currentWaveTime = 0;
+
+
+
+    public TextMeshProUGUI waveInfo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +37,8 @@ public class EnemySpawnController : MonoBehaviour
         if (currentWaveTime > 0) {
             currentWaveTime -= Time.deltaTime;
         }
+
+        waveInfo.SetText($"Wave: {currentWaveCount}\n Time: {currentWaveTime.ToString("0.00")}s");
     }
 
     void Spawn() {
