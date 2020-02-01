@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerId = 0;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float firingDelay = 0.5f;
-    [SerializeField] private Transform firingPivotPosition;
+    [SerializeField] private Transform firingPivot;
 
     private InputUser inputUser;
     private InputUser otherInputUser;
@@ -87,13 +87,15 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.flipX = false;
             gunSprite.flipY = false;
-            gunSprite.sortingOrder = 11;
+            //gunSprite.sortingOrder = 11;
+            //otherGunSprite.sortingOrder = 9;
         }
         else
         {
             playerSprite.flipX = true;
             gunSprite.flipY = true;
-            gunSprite.sortingOrder = 9;
+            //gunSprite.sortingOrder = 9;
+            //otherGunSprite.sortingOrder = 11;
         }
     }
 
@@ -102,8 +104,8 @@ public class PlayerController : MonoBehaviour
         if (gamePad2.rightShoulder.isPressed && canFire)
         {
             Debug.Log(gameObject.name + " fired");
-            Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivotPosition.position, Quaternion.identity);
-            bullet.Shoot(transform.up);
+            Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivot.position, Quaternion.identity);
+            bullet.Shoot(firingPivot.right);
             canFire = false;
         }
     }
