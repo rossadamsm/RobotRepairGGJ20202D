@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,11 +7,15 @@ using UnityEngine.InputSystem.Users;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Bullet bulletPrefab;
+
     [HideInInspector] public InputUser InputUser { get { return inputUser; } set { inputUser = value;} }
 
     [Tooltip("0 = player1, 1 = player 2")]
     [SerializeField] private int playerId = 0;
     [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float firingDelay = 0.5f;
+    [SerializeField] private Transform firingPivotPosition;
 
     private InputUser inputUser;
     private InputUser otherInputUser;
@@ -19,6 +24,8 @@ public class PlayerController : MonoBehaviour
     PlayerControls controls;
     Vector2 move;
     Vector2 rotate;
+    bool canFire = true;
+    float firingDelayTimer = 0;
 
     public void RegisterControls(InputUser myUser, InputUser otherUser)
     {
@@ -43,6 +50,29 @@ public class PlayerController : MonoBehaviour
         //transform.Rotate(r, Space.World);
         float heading = Mathf.Atan2(-rotate.x, rotate.y);
         transform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);
+
+        Shoot();
+
+        if (canFire == false)
+            firingDelayTimer += Time.deltaTime;
+
+        if (firingDelayTimer >= firingDelay)
+        {
+            canFire = true;
+            firingDelayTimer = 0;
+        }
+        
+    }
+
+    private void Shoot()
+    {
+        if (gamePad2.rightShoulder.isPressed && canFire)
+        {
+            Debug.Log(gameObject.name + " fired");
+            Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivotPosition.position, Quaternion.identity);
+            bullet.Shoot(transform.up);
+            canFire = false;
+        }
     }
 
 
