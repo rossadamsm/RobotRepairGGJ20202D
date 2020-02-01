@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TowerBuildController : MonoBehaviour
 {
@@ -23,26 +21,26 @@ public class TowerBuildController : MonoBehaviour
         }
     }
 
-    void HandleHotkeys() {
+    void HandleHotkeys()
+    {
         if (Input.GetKeyDown(towerHotkey))
         {
-            Debug.Log("Key");
-            ScrapCollector player = gameObject.GetComponent<ScrapCollector>();
-            //if (player.ScrapCount >= 10) {
-            //    if (currentTower != null)
-            //    {
-            //        Destroy(currentTower);
-            //    }
-            //    else
-            //    {
-            //        currentTower = Instantiate(towerPrefab);
-            //        player.ScrapCount -= 10;
-            //        player.mesh.SetText($"Scrap: {player.ScrapCount}");
-            //    }
-            //}
+            if (ScrapCollector.scrapCount >= 10)
+            {
+                if (currentTower != null)
+                {
+                    Destroy(currentTower);
+                }
+                else
+                {
+                    currentTower = Instantiate(towerPrefab);
+                    currentTower.GetComponent<Tower>().isActivated = false;
+                }
+            }
         }
     }
-    void MoveObjectToMouse() {
+    void MoveObjectToMouse()
+    {
         RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hitInfo.collider != null)
         {
@@ -50,10 +48,26 @@ public class TowerBuildController : MonoBehaviour
             currentTower.transform.rotation = Quaternion.identity;
         }
     }
-    void HandleClicks() {
+    void HandleClicks()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            currentTower = null;
+            //The tower is being built here, subtract resource count then "place" the tower
+            if (ScrapCollector.ScrapCount >= towerCost)
+            {
+                ScrapCollector.scrapCount -= towerCost;
+                GameManager.Instance.AddScrap()
+                currentTower.GetComponent<Tower>().isActivated = true;
+                currentTower = null;
+            }
+            else
+            {
+                if (currentTower)
+                {
+                    Destroy(currentTower);
+                    currentTower = null;
+                }
+            }
         }
 
         if (Input.GetMouseButtonDown(1))

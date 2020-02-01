@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     [SerializeField] private int maxHealth;
     [SerializeField] private AudioClip damagedClip, repairedClip;
 
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     private PlayerController playerController;
 
     private void Awake()

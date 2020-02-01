@@ -14,27 +14,31 @@ public class Tower : MonoBehaviour
 
     public bool findingNewTarget = false;
 
+    public bool isActivated = false;
+
     // Update is called once per frame
     void Update()
     {
-        if (cooldown <= 0 && targettedEnemy != null)
-        {
-            cooldown = attackspeed;
-            targettedEnemy.hp -= damage;
-            if (targettedEnemy.hp <= 0)
+        if (isActivated) {
+            if (cooldown <= 0 && targettedEnemy != null)
             {
-                targettedEnemy.Die();
+                cooldown = attackspeed;
+                targettedEnemy.hp -= damage;
+                if (targettedEnemy.hp <= 0)
+                {
+                    targettedEnemy.Die();
+                }
             }
-        }
 
-        if (cooldown > 0)
-        {
-            cooldown -= Time.deltaTime;
-        }
+            if (cooldown > 0)
+            {
+                cooldown -= Time.deltaTime;
+            }
 
-        if (cooldown <= 0 && targettedEnemy == null)
-        {
-            findingNewTarget = true;
+            if (cooldown <= 0 && targettedEnemy == null)
+            {
+                findingNewTarget = true;
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -71,7 +75,8 @@ public class Tower : MonoBehaviour
             {
                 for (int i = 0; i < results.Length; i++)
                 {
-                    if (results[i] != null) {
+                    if (results[i] != null)
+                    {
                         targettedEnemyGameObject = results[i].gameObject;
                         targettedEnemy = targettedEnemyGameObject.GetComponent<Enemy>();
                         if (targettedEnemy == null || targettedEnemyGameObject == null)

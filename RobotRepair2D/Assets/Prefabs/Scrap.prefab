@@ -151,7 +151,7 @@ MonoBehaviour:
   scrapCount: 1
   attractMinDistance: 0.05
   isAttracting: 0
-  attractSpeed: 9
+  attractSpeed: 70
   attractTarget: {fileID: 0}
   isExplodingFromEnemy: 0
   movingToLocation: {x: 0, y: 0, z: 0}
@@ -170,4 +170,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 20

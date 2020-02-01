@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 6252328610186743299}
   - component: {fileID: 6563161063071102044}
   - component: {fileID: 6723134138093213065}
+  - component: {fileID: 8518988374993974505}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab728b555d62d93469bd39684cc17e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedScrapCount: 10
+  droppedScrapCount: 5
   scrapPrefab: {fileID: 3048758595981167510, guid: 7315a4ac926d2ca4a95f1cd8ca2a33f2,
     type: 3}
   isDying: 0
@@ -188,7 +189,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.89}
+  m_Offset: {x: 0, y: -2.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -197,10 +198,28 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 8.43, y: 15.83}
+  m_Size: {x: 13, y: 22}
   m_EdgeRadius: 0
+--- !u!114 &8518988374993974505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252328610186743298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e12145b3a851748abfebed9b8175c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  moveSpeed: 20
+  attackRange: 10
+  damage: 1
+  attackSpeed: 1
+  cooldown: 0
 --- !u!1 &6252328610885697092
 GameObject:
   m_ObjectHideFlags: 0
