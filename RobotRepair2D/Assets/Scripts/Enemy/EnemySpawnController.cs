@@ -53,8 +53,14 @@ public class EnemySpawnController : MonoBehaviour
                 p.scrapCount = 0;
             }
         }
+        int toSpawn = spawnPerWave * currentWaveCount;
         for (int i = 0; i < (spawnPerWave * currentWaveCount); i++) {
-            Instantiate(enemyPrefab, new Vector3(transform.position.x + Random.Range(1,5), transform.position.y + Random.Range(1,5), transform.position.z),Quaternion.identity);
+            foreach (GameObject spawner in GameObject.FindGameObjectsWithTag("Spawner")) {
+                if (toSpawn > 0) {
+                    Instantiate(enemyPrefab, new Vector3(spawner.transform.position.x + Random.Range(1, 5), spawner.transform.position.y + Random.Range(1, 5), 0), Quaternion.identity);
+                    toSpawn--;
+                }
+            }
         }
     }
 }
