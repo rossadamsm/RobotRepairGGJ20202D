@@ -133,3 +133,4 @@ MonoBehaviour:
   currentWaveCount: 1
   currentWaveTime: 0
   waveInfo: {fileID: 0}
+  manager: {fileID: 0}

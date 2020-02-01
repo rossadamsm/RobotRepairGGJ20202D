@@ -71,17 +71,19 @@ public class Tower : MonoBehaviour
             {
                 for (int i = 0; i < results.Length; i++)
                 {
-                    targettedEnemyGameObject = results[i].gameObject;
-                    targettedEnemy = targettedEnemyGameObject.GetComponent<Enemy>();
-                    if (targettedEnemy == null)
-                    {
-                        targettedEnemy = null;
-                        targettedEnemyGameObject = null;
-                    }
-                    else
-                    {
-                        findingNewTarget = false;
-                        return;
+                    if (results[i] != null) {
+                        targettedEnemyGameObject = results[i].gameObject;
+                        targettedEnemy = targettedEnemyGameObject.GetComponent<Enemy>();
+                        if (targettedEnemy == null || targettedEnemyGameObject == null)
+                        {
+                            targettedEnemy = null;
+                            targettedEnemyGameObject = null;
+                        }
+                        else
+                        {
+                            findingNewTarget = false;
+                            return;
+                        }
                     }
                 }
             }

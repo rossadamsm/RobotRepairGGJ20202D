@@ -20,6 +20,8 @@ public class EnemySpawnController : MonoBehaviour
 
     public TextMeshProUGUI waveInfo;
 
+    public GameManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,9 +45,16 @@ public class EnemySpawnController : MonoBehaviour
     }
 
     void Spawn() {
-        float spawnTotal = 10;
-        for (int i = 0; i < (spawnTotal * currentWaveCount); i++) {
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3(transform.position.x + Random.Range(1,5), transform.position.y + Random.Range(1,5), transform.position.z),Quaternion.identity);
+        GameObject[] obs = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject go in obs) {
+            Player p = go.GetComponent<Player>();
+            if (p != null) {
+                manager.PoolToHighScore(p.scrapCount);
+                p.scrapCount = 0;
+            }
+        }
+        for (int i = 0; i < (spawnPerWave * currentWaveCount); i++) {
+            Instantiate(enemyPrefab, new Vector3(transform.position.x + Random.Range(1,5), transform.position.y + Random.Range(1,5), transform.position.z),Quaternion.identity);
         }
     }
 }
