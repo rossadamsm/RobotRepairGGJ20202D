@@ -13,15 +13,12 @@ public class Player : MonoBehaviour
     {
         
     }
-
-    void pickupAndDestroyScrap(Scrap scrap) {
-        if (scrap != null) {
-            scrap.attract(gameObject);
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Scrap scrap = collision.gameObject.GetComponent<Scrap>();
-        pickupAndDestroyScrap(scrap);
+        if (scrap != null)
+        {
+            scrap.attract(gameObject);
+        }
     }
 }

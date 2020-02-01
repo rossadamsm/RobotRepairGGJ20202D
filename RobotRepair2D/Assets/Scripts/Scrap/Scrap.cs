@@ -6,9 +6,9 @@ public class Scrap : MonoBehaviour
 {
 
     public int scrapCount = 1;
-    public float attractMinDistance = 5f;
+    public float attractMinDistance = 0.005f;
     public bool isAttracting = false;
-    public float attractSpeed = 12f;
+    public float attractSpeed = 7f;
     public GameObject attractTarget;
 
     public bool isExplodingFromEnemy = false;
@@ -19,8 +19,8 @@ public class Scrap : MonoBehaviour
     {
         if (isAttracting) {
             float step = attractSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, movingToLocation, step);
-            float distance = Vector3.Distance(transform.position, movingToLocation);
+            transform.position = Vector3.MoveTowards(transform.position, attractTarget.transform.position, step);
+            float distance = Vector3.Distance(transform.position, attractTarget.transform.position);
             if (distance < attractMinDistance)
             {
                 Player p = attractTarget.GetComponent<Player>();

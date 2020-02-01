@@ -27,14 +27,20 @@ public class TowerBuildController : MonoBehaviour
         if (Input.GetKeyDown(towerHotkey))
         {
             Debug.Log("Key");
-            if (currentTower != null)
-            {
-                Destroy(currentTower);
+            Player player = gameObject.GetComponent<Player>();
+            if (player.scrapCount >= 10) {
+                if (currentTower != null)
+                {
+                    Destroy(currentTower);
+                }
+                else
+                {
+                    currentTower = Instantiate(towerPrefab);
+                    player.scrapCount -= 10;
+                    player.mesh.SetText($"Scrap: {player.scrapCount}");
+                }
             }
-            else
-            {
-                currentTower = Instantiate(towerPrefab);
-            }
+
         }
     }
     void MoveObjectToMouse() {

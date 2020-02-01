@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
@@ -15,16 +13,24 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cooldown <= 0 && targettedEnemy != null) {
+        if (cooldown <= 0 && targettedEnemy != null)
+        {
             cooldown = attackspeed;
             targettedEnemy.hp -= damage;
-            if (targettedEnemy.hp <= 0) {
+            if (targettedEnemy.hp <= 0)
+            {
                 targettedEnemy.Die();
             }
-        }   
+        }
 
-        if (cooldown > 0) {
+        if (cooldown > 0)
+        {
             cooldown -= Time.deltaTime;
+        }
+
+        if (cooldown <= 0 && targettedEnemy == null)
+        {
+            GetNewTarget();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -47,6 +53,27 @@ public class Tower : MonoBehaviour
         if (enemyGo == targettedEnemyGameObject)
         {
             targettedEnemy = null;
+        }
+    }
+
+    void GetNewTarget()
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+        float smallestDistance = 99999999f;
+        int smallestIndex = -1;
+        for (int i = 0; i < gos.Length; i++)
+        {
+            //Find the closest one
+            float distance = Vector3.Distance(transform.position, gos[i].transform.position);
+            if (distance < smallestDistance)
+            {
+                smallestDistance = distance;
+                smallestIndex = i;
+            }
+        }
+        if (smallestIndex != -1) {
+            targettedEnemyGameObject = gos[smallestIndex];
+            targettedEnemy = targettedEnemyGameObject.GetComponent<Enemy>();
         }
     }
 }

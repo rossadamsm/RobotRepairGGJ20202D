@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3048758595431619721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.81, y: -3.98, z: 0}
+  m_LocalPosition: {x: 0.01, y: -0.03, z: 0}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children: []
   m_Father: {fileID: 3048758595981167511}
@@ -92,9 +92,10 @@ GameObject:
   - component: {fileID: 3048758595981167511}
   - component: {fileID: 9191985998359897915}
   - component: {fileID: 938973309277145383}
+  - component: {fileID: 778769146}
   m_Layer: 0
   m_Name: Scrap
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,9 +149,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrapCount: 1
-  attractMinDistance: 5
+  attractMinDistance: 0.05
   isAttracting: 0
-  attractSpeed: 12
+  attractSpeed: 9
   attractTarget: {fileID: 0}
   isExplodingFromEnemy: 0
   movingToLocation: {x: 0, y: 0, z: 0}
+--- !u!58 &778769146
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3048758595981167510}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 5967e9922968c404980c9af983eb90ed, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
