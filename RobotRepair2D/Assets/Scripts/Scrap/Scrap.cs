@@ -26,7 +26,8 @@ public class Scrap : MonoBehaviour
                 ScrapCollector p = attractTarget.GetComponent<ScrapCollector>();
                 if (p != null) {
                     isAttracting = false;
-                    ScrapCollector.ScrapCount += scrapCount;
+                    GameManager.Instance.AddScrap(scrapCount);
+                    //ScrapCollector.ScrapCount += scrapCount;
                     //p.mesh.SetText($"Scrap: {p.scrapCount}");
                     Destroy(gameObject);
                 }
