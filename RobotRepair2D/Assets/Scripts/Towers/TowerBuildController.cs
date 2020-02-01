@@ -6,7 +6,7 @@ public class TowerBuildController : MonoBehaviour
     private GameObject towerPrefab;
     [SerializeField]
     private KeyCode towerHotkey = KeyCode.B;
-    private int towerCost = 10;
+    [SerializeField] private int towerCost = 10;
 
     GameObject currentTower;
 
