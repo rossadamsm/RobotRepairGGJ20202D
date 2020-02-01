@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5433576383624746967}
   - component: {fileID: 4971923034136840615}
   - component: {fileID: 5587270093328255701}
-  m_Layer: 0
-  m_Name: Bullet
+  m_Layer: 8
+  m_Name: BulletBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2ca777998ba8149a23efe3b829d54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletClip: {fileID: 8300000, guid: d77168d6c63364a4fa6628db5756922a, type: 3}
   bulletSpeed: 1000
 --- !u!50 &4971923034136840615
 Rigidbody2D:

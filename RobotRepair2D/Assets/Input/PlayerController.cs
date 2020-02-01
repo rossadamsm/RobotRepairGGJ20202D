@@ -8,7 +8,8 @@ using UnityEngine.InputSystem.Users;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Bullet bulletPrefab;
-
+    [SerializeField] private SpriteRenderer playerSprite, gunSprite;
+    [SerializeField] private Transform gunTransform;
     [HideInInspector] public InputUser InputUser { get { return inputUser; } set { inputUser = value;} }
 
     [Tooltip("0 = player1, 1 = player 2")]
@@ -26,6 +27,14 @@ public class PlayerController : MonoBehaviour
     Vector2 rotate;
     bool canFire = true;
     float firingDelayTimer = 0;
+    private Animator animator;
+
+    [HideInInspector] public bool playerDisabled = false;
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     public void RegisterControls(InputUser myUser, InputUser otherUser)
     {
@@ -40,16 +49,20 @@ public class PlayerController : MonoBehaviour
     {
         if (gamePad1 == null || gamePad2 == null) return;
 
-        move = gamePad1.leftStick.ReadValue();
+        if (!playerDisabled)
+            move = gamePad1.leftStick.ReadValue();
+
         rotate = gamePad2.rightStick.ReadValue();
 
         Vector2 m = new Vector2(move.x, move.y) * moveSpeed * Time.deltaTime;
         transform.Translate(m, Space.World);
+        
+        AnimateCharacter();
 
         //Vector2 r = new Vector2(rotate.y, rotate.x) * 100f * Time.deltaTime;
         //transform.Rotate(r, Space.World);
         float heading = Mathf.Atan2(-rotate.x, rotate.y);
-        transform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);
+        gunTransform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);
 
         Shoot();
 
@@ -61,7 +74,27 @@ public class PlayerController : MonoBehaviour
             canFire = true;
             firingDelayTimer = 0;
         }
-        
+    }
+
+    private void AnimateCharacter()
+    {
+        if (move != Vector2.zero)
+            animator.SetBool("Running", true);
+        else
+            animator.SetBool("Running", false);
+
+        if (rotate.x > 0)
+        {
+            playerSprite.flipX = false;
+            gunSprite.flipY = false;
+            gunSprite.sortingOrder = 11;
+        }
+        else
+        {
+            playerSprite.flipX = true;
+            gunSprite.flipY = true;
+            gunSprite.sortingOrder = 9;
+        }
     }
 
     private void Shoot()
@@ -74,26 +107,4 @@ public class PlayerController : MonoBehaviour
             canFire = false;
         }
     }
-
-
-    //private void OnDisable()
-    //{
-    //    controls.Player1.Disable();
-    //}
-
-    //private void Fire_performed(InputAction.CallbackContext context)
-    //{
-    //    Debug.Log("Player1 Fired");
-    //}
-
-    //private void Update()
-    //{
-    //    Vector2 m = new Vector2(move.x, move.y) * moveSpeed * Time.deltaTime;
-    //    transform.Translate(m, Space.World);
-
-    //    //Vector2 r = new Vector2(rotate.y, rotate.x) * 100f * Time.deltaTime;
-    //    //transform.Rotate(r, Space.World);
-    //    float heading = Mathf.Atan2(-rotate.x, rotate.y);
-    //    transform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);
-    //}
 }
