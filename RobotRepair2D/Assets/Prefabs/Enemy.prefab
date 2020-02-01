@@ -83,6 +83,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab728b555d62d93469bd39684cc17e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  droppedScrapCount: 10
+  scrapPrefab: {fileID: 3048758595981167510, guid: 7315a4ac926d2ca4a95f1cd8ca2a33f2,
+    type: 3}
+  isDying: 0
+  hp: 10
 --- !u!1 &6252328610885697092
 GameObject:
   m_ObjectHideFlags: 0
