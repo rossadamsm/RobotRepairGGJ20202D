@@ -9,17 +9,17 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "cf93f7b6-e535-4fd8-9a4c-c85703e4b3ee",
-                    "expectedControlType": "Stick",
-                    "processors": "",
-                    "interactions": ""
+                    "expectedControlType": "Axis",
+                    "processors": "AxisDeadzone",
+                    "interactions": "Hold"
                 },
                 {
                     "name": "Looking",
                     "type": "Value",
                     "id": "4960be4b-9069-41fa-bf96-3b7f9b0e635c",
                     "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": ""
+                    "processors": "AxisDeadzone",
+                    "interactions": "Hold"
                 }
             ],
             "bindings": [
