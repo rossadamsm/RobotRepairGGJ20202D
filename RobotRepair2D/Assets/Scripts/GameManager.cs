@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private int shipScrapCollected;
     public int currentScrapCount { get; private set; }
 
+    [SerializeField] TextMeshPro waveCompleteText;
     [SerializeField] LevelInfo[] levelInfos;
 
     private LevelInfo currentLevelInfo;
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadLevelAfterX()
     {
+        waveCompleteText.GetComponent<Animator>().SetTrigger("FlyBy");
         yield return new WaitForSeconds(4f);
         MoveToNextLevel();
     }
@@ -87,6 +89,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("All levels complete");
             return;
         }
+
 
         currentLevelInfo = levelInfos[currentLevelIndex];
 
