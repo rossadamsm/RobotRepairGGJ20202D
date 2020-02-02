@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+
     public void RegisterControls(InputUser myUser, InputUser otherUser)
     {
         InputUser = myUser;
@@ -72,6 +73,9 @@ public class PlayerController : MonoBehaviour
         if (gamePad2.rightShoulder.isPressed && canFire)
             Shoot();
 
+        if (gamePad2.leftShoulder.isPressed)
+            PlaceTower();
+
         if (canFire == false)
             firingDelayTimer += Time.fixedDeltaTime;
 
@@ -80,6 +84,24 @@ public class PlayerController : MonoBehaviour
             canFire = true;
             firingDelayTimer = 0;
         }
+
+    }
+
+    private void PlaceTower()
+    {
+        //TODO connect to tower system
+    }
+
+    internal void RumbleController()
+    {
+        StartCoroutine(ShortRumble());
+    }
+
+    private IEnumerator ShortRumble()
+    {
+        gamePad1.SetMotorSpeeds(0.25f, 0.75f);
+        yield return new WaitForSeconds(0.5f);
+        gamePad1.SetMotorSpeeds(0f, 0f);
     }
 
     private void AnimateCharacter()
