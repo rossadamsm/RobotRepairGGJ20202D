@@ -596,7 +596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ship Health : 0/300'
+  m_text: 'Ship Health : 0/2000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 183543079}
-    characterCount: 19
+    characterCount: 20
     spriteCount: 0
     spaceCount: 3
     wordCount: 4
@@ -10800,7 +10800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  ShipScrapTotalRequired: 300
+  ShipScrapTotalRequired: 2000
   finalScore: 0
   levelInfos:
   - {fileID: 11400000, guid: 3e064f023734722418929a0d66908262, type: 2}
@@ -10819,6 +10819,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9190fe740034484a9518a2926343f87, type: 2}
   - {fileID: 11400000, guid: d65a6d306374a8e4990375bd669d7811, type: 2}
   - {fileID: 11400000, guid: fbcd095061241274892413816a9c096d, type: 2}
+  - {fileID: 11400000, guid: 2593d6994abc19d4786049aaf16c4a97, type: 2}
+  - {fileID: 11400000, guid: 4951c3a0c74a23941a5e870dd8a0eec9, type: 2}
+  - {fileID: 11400000, guid: 22a52db4ee0d9b349872f09c695afe04, type: 2}
+  - {fileID: 11400000, guid: 87a402d1d7d4c8d4393b95051de5543c, type: 2}
 --- !u!4 &493778369
 Transform:
   m_ObjectHideFlags: 0
@@ -35181,7 +35185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1861618221
 MonoBehaviour:
   m_ObjectHideFlags: 0

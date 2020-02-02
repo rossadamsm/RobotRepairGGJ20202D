@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour
         if (gamePad2.rightShoulder.isPressed && canFire)
             Shoot();
 
+        if (gamePad2.leftShoulder.isPressed)
+            PlaceTower();
+
         if (canFire == false)
             firingDelayTimer += Time.fixedDeltaTime;
 
@@ -82,6 +85,11 @@ public class PlayerController : MonoBehaviour
             firingDelayTimer = 0;
         }
 
+    }
+
+    private void PlaceTower()
+    {
+        //TODO connect to tower system
     }
 
     internal void RumbleController()
