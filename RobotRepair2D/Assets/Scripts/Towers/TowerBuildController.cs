@@ -16,8 +16,8 @@ public class TowerBuildController : MonoBehaviour
         HandleHotkeys();
         if (currentTower != null)
         {
-            MoveObjectToMouse();
-            HandleClicks();
+            //MoveObjectToMouse();
+            //HandleClicks();
         }
     }
 
@@ -76,5 +76,24 @@ public class TowerBuildController : MonoBehaviour
                 Destroy(currentTower);
             }
         }
+    }
+
+    public void PlaceTower(Transform placeAt)
+    {
+        //This method is connecting to PlayerController.cs - specifically used for controller keybinds
+        if (GameManager.Instance.currentScrapCount >= 10)
+        {
+            if (CanPlaceTower()) {
+                currentTower = Instantiate(towerPrefab,new Vector3(placeAt.position.x, placeAt.position.y+25), Quaternion.identity);
+                currentTower.GetComponent<Tower>().isActivated = true;
+                GameManager.Instance.AddScrap(-towerCost);
+            }
+        }
+    }
+
+    bool CanPlaceTower() {
+
+
+        return true;
     }
 }

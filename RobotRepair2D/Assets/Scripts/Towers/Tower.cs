@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, IDamagable
 {
 
     private float damage = 2f;
@@ -15,6 +16,10 @@ public class Tower : MonoBehaviour
     public bool findingNewTarget = false;
 
     public bool isActivated = false;
+
+    public int hp = 5;
+
+    [SerializeField] private Slider healthBar;
 
     // Update is called once per frame
     void Update()
@@ -92,6 +97,15 @@ public class Tower : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        hp -= amount;
+        healthBar.value = hp;
+        if (hp <= 0) {
+            Destroy(gameObject);
         }
     }
 }

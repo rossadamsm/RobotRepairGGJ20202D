@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private SpriteRenderer playerSprite, gunSprite;
     [SerializeField] private Transform gunTransform;
-    [HideInInspector] public InputUser InputUser { get { return inputUser; } set { inputUser = value;} }
+    [HideInInspector] public InputUser InputUser { get { return inputUser; } set { inputUser = value; } }
 
     [Tooltip("0 = player1, 1 = player 2")]
     [SerializeField] private int playerId = 0;
@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             Shoot();
 
+        if (Input.GetKeyDown(KeyCode.P))
+            PlaceTower(firingPivot);
+
         if (gamePad1 == null || gamePad2 == null) return;
 
         if (!PlayerDisabled)
@@ -62,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 m = new Vector2(move.x, move.y) * moveSpeed * Time.fixedDeltaTime;
         transform.Translate(m, Space.World);
-        
+
         AnimateCharacter();
 
         //Vector2 r = new Vector2(rotate.y, rotate.x) * 100f * Time.deltaTime;
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
             Shoot();
 
         if (gamePad2.leftShoulder.isPressed)
-            PlaceTower();
+            PlaceTower(firingPivot);
 
         if (canFire == false)
             firingDelayTimer += Time.fixedDeltaTime;
@@ -87,9 +90,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void PlaceTower()
+    private void PlaceTower(Transform placementPos)
     {
         //TODO connect to tower system
+        gameObject.GetComponent<TowerBuildController>().PlaceTower(placementPos);
     }
 
     internal void RumbleController()
