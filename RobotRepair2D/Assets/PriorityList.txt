@@ -1,6 +1,5 @@
 -- Priority List In Orderof NB --
 
-
 - Create/Pull in intro scene
 - Create/Pull in end scene
 - Load Levels correctly (Intro/Game/End)
@@ -10,12 +9,13 @@
 Player Feedback
 
 - Add a particle effect (like dizzy thing maybe/ or sparks) for a robot that is disabled
-- Haptic feedback on controllers when getting hit (look into this)
+- Add a particle effect for when you are repaired
 
-- Make player bullets look cooler
+
+-Get some more variety of audioclips
+
 - Add PowerUps/Pickups
 
-- Make it so it cost scrap to repair other player
 
 - Create second Enemy type
 	-  Mode
@@ -40,3 +40,9 @@ Player Feedback
 - Hit effect for players (flash red through code)
 - Health bar
 - Add a sprite for a damaged/disable player 
+- Haptic feedback on controllers when getting hit (look into this)
+
+
+- Make it so it cost scrap to repair other player
+
+- Make player bullets look cooler
