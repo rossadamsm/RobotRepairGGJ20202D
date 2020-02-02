@@ -43,13 +43,18 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     private void ReEnablePlayer()
     {
-        currentHealth = maxHealth;
-        healthBar.value = currentHealth;
-        playerController.PlayerDisabled = false;
-        AudioSource.PlayClipAtPoint(repairedClip, transform.position);
-        PlayerEnabled?.Invoke();
-        playerSprite.sprite = originalSprite;
-        playerSprite.GetComponent<Animator>().enabled = true;
+        if (GameManager.Instance.currentScrapCount >= 3)
+        {
+            GameManager.Instance.AddScrap(-3);
+
+            currentHealth = maxHealth;
+            healthBar.value = currentHealth;
+            playerController.PlayerDisabled = false;
+            AudioSource.PlayClipAtPoint(repairedClip, transform.position);
+            PlayerEnabled?.Invoke();
+            playerSprite.sprite = originalSprite;
+            playerSprite.GetComponent<Animator>().enabled = true;
+        }
     }
 
     private void DisablePlayer()
@@ -72,6 +77,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         healthBar.value = currentHealth;
 
         StartCoroutine(FlashPlayerRed());
+
+        playerController.RumbleController();
     }
 
     private IEnumerator FlashPlayerRed()
