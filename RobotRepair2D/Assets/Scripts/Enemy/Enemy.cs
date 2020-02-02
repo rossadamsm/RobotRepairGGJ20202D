@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour, IDamagable
             GameObject scrap = Instantiate(scrapPrefab, startPos, Quaternion.identity);
             scrap.GetComponent<Scrap>().explodeFromEnemy(endPos);
         }
-        Destroy(gameObject);
         enemyDied?.Invoke();
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

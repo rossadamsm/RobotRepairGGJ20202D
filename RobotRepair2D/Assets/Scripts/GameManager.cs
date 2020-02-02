@@ -66,11 +66,20 @@ public class GameManager : MonoBehaviour
     {
         currentEnemyCount--;
 
-        if (currentEnemyCount <= 0)
+        Debug.Log("Enemy died");
+
+
+        if (currentEnemyCount < 0)
+            return;
+
+
+        if (currentEnemyCount == 0)
         {
             Debug.Log("All Enemies Dead");
             StartCoroutine(LoadLevelAfterX());
         }
+
+        Debug.Log("Enemies remaining:" + currentEnemyCount);
     }
 
     private IEnumerator LoadLevelAfterX()
@@ -106,10 +115,18 @@ public class GameManager : MonoBehaviour
         currentScrapCount = 0;
         ShipPartiallyRepaired?.Invoke();
 
+        if (shipScrapCollected >= ShipScrapTotalRequired)
+        {
+            EndGame(true);
+            return;
+        }
+
         //Update Game Progress UI
         UIManager.Instance.ShipRepairStatusText.SetText($"Ship Health : {shipScrapCollected}/{ShipScrapTotalRequired}");
         UIManager.Instance.ScrapTotalText.SetText($"Scrap: 0");
         UIManager.Instance.WaveInfoText.SetText($"Wave: {currentLevelInfo.LevelNo}");
+
+        Debug.Log($"Wave {currentLevelInfo.LevelNo} spawing");
 
         //Spawn Next Wave of Enemies
         currentEnemyCount = currentLevelInfo.NoEnemiesToSpawn;

@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log(gameObject.name + " fired");
+        //Debug.Log(gameObject.name + " fired");
         Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivot.position, Quaternion.identity);
         bullet.tag = gameObject.tag;
         bullet.Shoot(firingPivot.right);
