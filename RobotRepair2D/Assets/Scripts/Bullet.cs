@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     internal void Shoot(Vector3 forward)
     {
-        AudioSource.PlayClipAtPoint(bulletClip, transform.position);
+        SMScript.Instance.PlayShootingClip();
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(forward * bulletSpeed);
         Debug.Log("Added force to bullet" + forward * bulletSpeed);
@@ -18,9 +18,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TryDamage(collision);
-
         if (collision.tag == gameObject.tag) { Debug.Log("ignored myself bullet"); return; }
+
+        TryDamage(collision);
 
         Debug.Log("Bullet hit " + collision.gameObject.name);
         Destroy(gameObject);    

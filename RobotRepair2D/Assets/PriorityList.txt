@@ -8,9 +8,7 @@
 - Attack animation/effect for enemies (animation attached to enemy, swipe with weapon)
 
 Player Feedback
-- Add a sprite for a damaged/disable player
-- Hit effect for players (flash red through code)
-- Health bar
+
 - Add a particle effect (like dizzy thing maybe/ or sparks) for a robot that is disabled
 - Haptic feedback on controllers when getting hit (look into this)
 
@@ -36,4 +34,9 @@ Player Feedback
 - Alien Death
 - Impact Robot
 - Repair
-- 
+
+
+Player Feedback
+- Hit effect for players (flash red through code)
+- Health bar
+- Add a sprite for a damaged/disable player 
