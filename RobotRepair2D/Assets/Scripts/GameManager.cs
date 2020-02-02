@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     private int shipScrapCollected;
     public int currentScrapCount { get; private set; }
 
-    [SerializeField] TextMeshPro waveCompleteText;
+    [SerializeField] TextMeshProUGUI waveCompleteText;
     [SerializeField] LevelInfo[] levelInfos;
 
     private LevelInfo currentLevelInfo;
@@ -128,10 +129,14 @@ public class GameManager : MonoBehaviour
     public void EndGame(bool completed)
     {
         if (completed)
+        {
             Debug.Log("Game Completed!");
+            SceneManager.LoadScene("Victory");
+        }
         else
         {
             Debug.Log("Game Failed");
+            SceneManager.LoadScene("GameOver");
         }
         //Load Final Scene (a bad version?)
     }

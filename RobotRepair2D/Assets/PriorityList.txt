@@ -1,21 +1,13 @@
 -- Priority List In Orderof NB --
 
-- Create/Pull in intro scene
-- Create/Pull in end scene
-- Load Levels correctly (Intro/Game/End)
-- Integrate Audio System
 - Attack animation/effect for enemies (animation attached to enemy, swipe with weapon)
 
 Player Feedback
 
-- Add a particle effect (like dizzy thing maybe/ or sparks) for a robot that is disabled
+-Trigger player disabled particle effects
 - Add a particle effect for when you are repaired
 
-
--Get some more variety of audioclips
-
 - Add PowerUps/Pickups
-
 
 - Create second Enemy type
 	-  Mode
@@ -24,8 +16,16 @@ Player Feedback
 - Do AWS Scoring System
 - Create a restart game from last scene (have to watch out for static variables)
 
+- Add some animation to the victory scene
 
 --- Complete ---
+
+- Create/Pull in intro scene
+- Create/Pull in end scene
+- Load Levels correctly (Intro/Game/End)
+
+- Integrate Audio System
+
 - Player Movement
 - Player Aiming and shooting
 - Add end game condition
@@ -34,15 +34,17 @@ Player Feedback
 - Alien Death
 - Impact Robot
 - Repair
-
+-Get some more variety of audioclips
 
 Player Feedback
 - Hit effect for players (flash red through code)
 - Health bar
 - Add a sprite for a damaged/disable player 
 - Haptic feedback on controllers when getting hit (look into this)
-
+- Add a particle effect (like dizzy thing maybe/ or sparks) for a robot that is disabled
 
 - Make it so it cost scrap to repair other player
 
 - Make player bullets look cooler
+
+- Element Cost UIs
