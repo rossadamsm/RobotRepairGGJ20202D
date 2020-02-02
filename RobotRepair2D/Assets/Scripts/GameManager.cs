@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     private int currentEnemyCount;
     private PlayerController[] playerControllers;
 
+    public int powerupEveryXLevels = 2;
+    public int spawnPer = 2;
+
     private void Awake()
     {
         //Ensures there is only ever one in the scene
@@ -83,6 +86,10 @@ public class GameManager : MonoBehaviour
     public void MoveToNextLevel()
     {
         currentLevelIndex++;
+
+        if (currentLevelIndex % powerupEveryXLevels == 0) {
+            PowerupManager.Instance.SpawnPowerups(spawnPer);
+        }
 
         if (currentLevelIndex >= levelInfos.Length)
         {
