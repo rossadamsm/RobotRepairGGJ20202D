@@ -27,23 +27,19 @@ public class PowerupManager : MonoBehaviour
         int upper = powerups.Count - 1;
         for (int i = 0; i < count; i++)
         {
+            int quadX = Random.Range(0, 2);
+            int quadY = Random.Range(0, 2);
+
+            if (quadX == 0) quadX = -1;
+            if (quadY == 0) quadY = -1;
+
             GameObject selectedPower = powerups[Random.Range(lower, upper)];
-            Vector3 position = new Vector3(Random.Range(lowerBoundX, upperBoundX) / 2f, Random.Range(lowerBoundY, upperBoundY) / 2f, 0);
+            Vector3 position = new Vector3(Random.Range(lowerBoundX, upperBoundX) * quadX / 2f, Random.Range(lowerBoundY, upperBoundY) * quadY / 2f, 0);
             Instantiate(selectedPower, position, Quaternion.identity);
             Debug.Log("Instantiate Power up @ " + position);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnDrawGizmos()
     {

@@ -19,6 +19,8 @@ public class DoubleDamagePowerup : MonoBehaviour
             p.doubleDamageActive = true;
             //Move away from the game space, will be destroyed in 10s
             gameObject.transform.SetPositionAndRotation(new Vector3(1000, 1000), Quaternion.identity);
+
+            FindObjectOfType<PostProcessingManager>().GetMad();
         }
         else
         {
@@ -42,6 +44,7 @@ public class DoubleDamagePowerup : MonoBehaviour
     {
         PlayerController p = target.GetComponent<PlayerController>();
         p.doubleDamageActive = false;
+        FindObjectOfType<PostProcessingManager>().ChillOut();
         Destroy(gameObject);
     }
 

@@ -145,9 +145,8 @@ public class GameManager : MonoBehaviour
     private void PoolToHighScore(int scrapCount)
     {
         score += scrapCount;
-        scoreMult += Mathf.Floor(scrapCount / 100);
-        finalScore = score * scoreMult;
-        UIManager.Instance.ScoreText.SetText(finalScore.ToString());
+        finalScore = score*10;
+        UIManager.Instance.ScoreText.SetText($"Score : {finalScore.ToString()}");
     }
 
     public void EndGame(bool completed)

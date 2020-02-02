@@ -29,12 +29,12 @@ public class StoryCamera : MonoBehaviour
 
         timer -= Time.deltaTime;
 
+
         if (timer <= 0)
         {
             if (target < photos.Count - 1)
             {
-                target += 1;
-                audioSources[1].Play();
+                MoveToNextFrame();
             }
             else
             {
@@ -51,5 +51,17 @@ public class StoryCamera : MonoBehaviour
 
             timer = transitionTime;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            MoveToNextFrame();
+        }
+    }
+
+    private void MoveToNextFrame()
+    {
+        target += 1;
+        audioSources[1].Play();
     }
 }
