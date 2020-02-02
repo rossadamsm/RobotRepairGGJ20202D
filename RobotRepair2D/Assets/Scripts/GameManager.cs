@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public static event Action ScrapCollected;
+    public static event Action ShipPartiallyRepaired;
 
     public int score = 0;
     public int ShipScrapTotalRequired = 300;
@@ -89,10 +93,12 @@ public class GameManager : MonoBehaviour
         // Add Scrap to ShipTotal repair
         shipScrapCollected += currentScrapCount;
         currentScrapCount = 0;
+        ShipPartiallyRepaired?.Invoke();
 
         //Update Game Progress UI
         UIManager.Instance.ShipRepairStatusText.SetText($"Ship Health : {shipScrapCollected}/{ShipScrapTotalRequired}");
         UIManager.Instance.ScrapTotalText.SetText($"Scrap: 0");
+        UIManager.Instance.WaveInfoText.SetText($"Wave: {currentLevelInfo.LevelNo}");
 
         //Spawn Next Wave of Enemies
         currentEnemyCount = currentLevelInfo.NoEnemiesToSpawn;
@@ -104,6 +110,7 @@ public class GameManager : MonoBehaviour
         currentScrapCount += scrapCount;
         UIManager.Instance.ScrapTotalText.SetText($"Scrap: {currentScrapCount} ");
         PoolToHighScore(scrapCount);
+        ScrapCollected?.Invoke();
     }
 
 

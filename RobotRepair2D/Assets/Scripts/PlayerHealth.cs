@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
+    public static event Action PlayerDisabled;
+    public static event Action playerEnabled;
+    public static event Action PlayerEnabled;
+
     [SerializeField] private int maxHealth;
     [SerializeField] private AudioClip damagedClip, repairedClip;
 
@@ -33,17 +37,20 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         currentHealth = maxHealth;
         playerController.PlayerDisabled = false;
         AudioSource.PlayClipAtPoint(repairedClip, transform.position);
+        playerEnabled?.Invoke();
     }
 
     private void DisablePlayer()
     {
         playerController.PlayerDisabled = true;
+        PlayerDisabled?.Invoke();
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth-= amount;
         AudioSource.PlayClipAtPoint(damagedClip, transform.position);
+        PlayerEnabled?.Invoke();
 
         if (currentHealth <= 0)
             DisablePlayer();

@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            Shoot();
+
         if (gamePad1 == null || gamePad2 == null) return;
 
         if (!PlayerDisabled)
@@ -66,7 +69,8 @@ public class PlayerController : MonoBehaviour
         float heading = Mathf.Atan2(-rotate.x, rotate.y);
         gunTransform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);
 
-        Shoot();
+        if (gamePad2.rightShoulder.isPressed && canFire)
+            Shoot();
 
         if (canFire == false)
             firingDelayTimer += Time.fixedDeltaTime;
@@ -103,13 +107,10 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (gamePad2.rightShoulder.isPressed && canFire)
-        {
-            Debug.Log(gameObject.name + " fired");
-            Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivot.position, Quaternion.identity);
-            bullet.tag = gameObject.tag;
-            bullet.Shoot(firingPivot.right);
-            canFire = false;
-        }
+        Debug.Log(gameObject.name + " fired");
+        Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivot.position, Quaternion.identity);
+        bullet.tag = gameObject.tag;
+        bullet.Shoot(firingPivot.right);
+        canFire = false;
     }
 }

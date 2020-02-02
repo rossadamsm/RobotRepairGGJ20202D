@@ -8,7 +8,58 @@ public class SMScript : MonoBehaviour
     public AudioSource musicSource;
     public static SMScript instance = null;
 
-    public AudioClip[] Sounds;
+    public AudioClip[] EnemyDeathSounds;
+    public AudioClip[] RobotPlayerHitSounds;
+    public AudioClip[] CollectScrapSounds;
+    public AudioClip[] RepairSounds;
+    public AudioClip[] RobotDisabledSounds;
+
+    private void OnDisable()
+    {
+        Enemy.enemyDied -= Enemy_enemyDied;
+        PlayerHealth.PlayerDisabled -= PlayerHealth_playerDisabled;
+        PlayerHealth.PlayerEnabled -= PlayerHealth_playerHit;
+        GameManager.ScrapCollected -= GameManager_ScrapCollected;
+        GameManager.ShipPartiallyRepaired -= PlayRepairClip;
+        PlayerHealth.PlayerEnabled -= PlayRepairClip;
+    }
+
+
+    private void OnEnable()
+    {
+        Enemy.enemyDied += Enemy_enemyDied;
+        PlayerHealth.PlayerDisabled += PlayerHealth_playerDisabled;
+        PlayerHealth.PlayerEnabled += PlayerHealth_playerHit;
+        GameManager.ScrapCollected += GameManager_ScrapCollected;
+        GameManager.ShipPartiallyRepaired += PlayRepairClip;
+        PlayerHealth.PlayerEnabled += PlayRepairClip;
+
+    }
+
+    private void PlayRepairClip()
+    {
+        PlaySingle(GetRandomClip(RepairSounds));
+    }
+
+    private void GameManager_ScrapCollected()
+    {
+        PlaySingle(GetRandomClip(CollectScrapSounds));
+    }
+
+    private void PlayerHealth_playerHit()
+    {
+        PlaySingle(GetRandomClip(RobotPlayerHitSounds));
+    }
+
+    private void PlayerHealth_playerDisabled()
+    {
+        PlaySingle(GetRandomClip(RobotDisabledSounds));
+    }
+
+    private void Enemy_enemyDied()
+    {
+        PlaySingle(GetRandomClip(EnemyDeathSounds));
+    }
 
     void Awake()
     {
