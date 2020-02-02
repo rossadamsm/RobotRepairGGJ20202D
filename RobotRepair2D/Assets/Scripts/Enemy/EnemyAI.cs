@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     public float attackSpeed = 1f;
     public float cooldown = 0f;
     private PlayerController[] players;
+    [SerializeField] private Animator clawAttacckAnimator;
+    [SerializeField] private Animator knifeSwipeAnimator;
 
     private void Awake()
     {
@@ -47,13 +51,20 @@ public class EnemyAI : MonoBehaviour
             float distance = Vector3.Distance(transform.position, target.transform.position);
             if (distance < attackRange)
             {
-                target.GetComponent<IDamagable>().TakeDamage(damage);
+                Attack();
             }
         }
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
         }
+    }
+
+    private void Attack()
+    {
+        target.GetComponent<IDamagable>().TakeDamage(damage);
+        clawAttacckAnimator.SetTrigger("Attack");
+        knifeSwipeAnimator.SetTrigger("Attack");
     }
 
     void FindPlayers()

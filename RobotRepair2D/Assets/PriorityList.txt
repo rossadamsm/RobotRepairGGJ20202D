@@ -1,11 +1,8 @@
 -- Priority List In Orderof NB --
 
-- Attack animation/effect for enemies (animation attached to enemy, swipe with weapon)
 
-Player Feedback
 
--Trigger player disabled particle effects
-- Add a particle effect for when you are repaired
+Particle Effect for ship in victory scene
 
 - Add PowerUps/Pickups
 
@@ -16,9 +13,9 @@ Player Feedback
 - Do AWS Scoring System
 - Create a restart game from last scene (have to watch out for static variables)
 
-- Add some animation to the victory scene
 
---- Complete ---
+
+----------- Complete ------------------
 
 - Create/Pull in intro scene
 - Create/Pull in end scene
@@ -48,3 +45,10 @@ Player Feedback
 - Make player bullets look cooler
 
 - Element Cost UIs
+
+-Trigger player disabled particle effects
+- Add a particle effect for when you are repaired
+
+- Add some animation to the victory scene
+
+- Attack animation/effect for enemies (animation attached to enemy, swipe with weapon)

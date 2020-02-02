@@ -21,6 +21,10 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     [SerializeField] private Sprite damagedSprite;
     [SerializeField] private Sprite originalSprite;
 
+    [SerializeField] private ParticleSystem[] disabledParticlesEffects;
+    [SerializeField] private ParticleSystem[] repairEffects;
+
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -54,6 +58,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable
             PlayerEnabled?.Invoke();
             playerSprite.sprite = originalSprite;
             playerSprite.GetComponent<Animator>().enabled = true;
+
+            for (int i = 0; i < disabledParticlesEffects.Length; i++)
+                disabledParticlesEffects[i].Stop();
+
+            for (int i = 0; i < repairEffects.Length; i++)
+                repairEffects[i].Play();
         }
     }
 
@@ -63,6 +73,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         PlayerDisabled?.Invoke();
         playerSprite.GetComponent<Animator>().enabled = false;
         playerSprite.sprite = damagedSprite;
+
+        for (int i = 0; i < disabledParticlesEffects.Length; i++)
+            disabledParticlesEffects[i].Play();
     }
 
     public void TakeDamage(int amount)
