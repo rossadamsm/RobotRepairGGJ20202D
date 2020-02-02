@@ -2,17 +2,18 @@
 
 
 
-Particle Effect for ship in victory scene
 
 - Add PowerUps/Pickups
+
+	   
+----- NOT DOING ---------------
+
+- Do AWS Scoring System
+- Create a restart game from last scene (have to watch out for static variables)
 
 - Create second Enemy type
 	-  Mode
 	-  Different AI
-	   
-- Do AWS Scoring System
-- Create a restart game from last scene (have to watch out for static variables)
-
 
 
 ----------- Complete ------------------
@@ -52,3 +53,6 @@ Player Feedback
 - Add some animation to the victory scene
 
 - Attack animation/effect for enemies (animation attached to enemy, swipe with weapon)
+
+
+- Particle Effect for ship in victory scene

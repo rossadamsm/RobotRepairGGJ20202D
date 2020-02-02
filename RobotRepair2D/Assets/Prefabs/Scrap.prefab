@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3048758595431619722}
   - component: {fileID: 3048758595431619723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ScrapSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 9191985998359897915}
   - component: {fileID: 938973309277145383}
   - component: {fileID: 778769146}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scrap
   m_TagString: Scrap
   m_Icon: {fileID: 0}
