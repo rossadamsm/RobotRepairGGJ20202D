@@ -38821,7 +38821,6 @@ MonoBehaviour:
   moveSpeed: 100
   firingDelay: 0.5
   firingPivot: {fileID: 895636003}
-  doubleDamageActive: 0
   PlayerDisabled: 0
 --- !u!4 &1193195105
 Transform:
@@ -39042,7 +39041,6 @@ MonoBehaviour:
   moveSpeed: 100
   firingDelay: 0.5
   firingPivot: {fileID: 431297162}
-  doubleDamageActive: 0
   PlayerDisabled: 0
 --- !u!4 &1255889313
 Transform:
