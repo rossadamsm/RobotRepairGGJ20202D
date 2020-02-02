@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private AudioClip bulletClip;
     [SerializeField] private float bulletSpeed = 1000;
-    [SerializeField] private int damage = 1;
+    [SerializeField] public int damage = 1;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private Vector3 velocity;
@@ -39,5 +39,9 @@ public class Bullet : MonoBehaviour
         {
             damagable.TakeDamage(damage);
         }
+    }
+
+    public void AddDamage(int amount) {
+        damage += amount;
     }
 }

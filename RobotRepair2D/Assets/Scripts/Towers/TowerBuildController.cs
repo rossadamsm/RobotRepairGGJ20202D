@@ -8,6 +8,9 @@ public class TowerBuildController : MonoBehaviour
     private KeyCode towerHotkey = KeyCode.B;
     [SerializeField] private int towerCost = 10;
 
+    private float buildCooldown = 5f;
+    private float currentCooldown = 0f;
+
     GameObject currentTower;
 
     // Update is called once per frame
@@ -16,6 +19,7 @@ public class TowerBuildController : MonoBehaviour
         HandleHotkeys();
         if (currentTower != null)
         {
+            currentCooldown -= Time.deltaTime;
             //MoveObjectToMouse();
             //HandleClicks();
         }
@@ -83,15 +87,22 @@ public class TowerBuildController : MonoBehaviour
         //This method is connecting to PlayerController.cs - specifically used for controller keybinds
         if (GameManager.Instance.currentScrapCount >= 10)
         {
-            if (CanPlaceTower()) {
-                currentTower = Instantiate(towerPrefab,new Vector3(placeAt.position.x, placeAt.position.y+25), Quaternion.identity);
-                currentTower.GetComponent<Tower>().isActivated = true;
-                GameManager.Instance.AddScrap(-towerCost);
+            if (CanPlaceTower())
+            {
+                if (currentCooldown <= 0)
+                {
+                    currentTower = Instantiate(towerPrefab, new Vector3(placeAt.position.x, placeAt.position.y + 25), Quaternion.identity);
+                    currentTower.GetComponent<Tower>().isActivated = true;
+                    GameManager.Instance.AddScrap(-towerCost);
+
+                    currentCooldown = buildCooldown;
+                }
             }
         }
     }
 
-    bool CanPlaceTower() {
+    bool CanPlaceTower()
+    {
 
 
         return true;
