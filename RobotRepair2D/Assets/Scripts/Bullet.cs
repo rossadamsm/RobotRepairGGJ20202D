@@ -43,5 +43,6 @@ public class Bullet : MonoBehaviour
 
     public void AddDamage(int amount) {
         damage += amount;
+        Debug.Log($"Bullet did {amount} damage");
     }
 }

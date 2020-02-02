@@ -28,8 +28,9 @@ public class PowerupManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             GameObject selectedPower = powerups[Random.Range(lower, upper)];
-            Vector3 position = new Vector3(Random.Range(lowerBoundX, upperBoundX), Random.Range(lowerBoundY, upperBoundY), 0);
+            Vector3 position = new Vector3(Random.Range(lowerBoundX, upperBoundX) / 2f, Random.Range(lowerBoundY, upperBoundY) / 2f, 0);
             Instantiate(selectedPower, position, Quaternion.identity);
+            Debug.Log("Instantiate Power up @ " + position);
         }
     }
     // Start is called before the first frame update
@@ -47,5 +48,6 @@ public class PowerupManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(upperBoundX, upperBoundY, 0));
+        Gizmos.DrawWireCube(transform.position, new Vector3(lowerBoundX, lowerBoundY, 0));
     }
 }
