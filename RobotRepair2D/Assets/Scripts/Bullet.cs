@@ -6,13 +6,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] private AudioClip bulletClip;
     [SerializeField] private float bulletSpeed = 1000;
     [SerializeField] private int damage = 1;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+    private Vector3 velocity;
 
     internal void Shoot(Vector3 forward)
     {
         SMScript.Instance.PlayShootingClip();
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(forward * bulletSpeed);
+        velocity = forward * bulletSpeed;
         Debug.Log("Added force to bullet" + forward * bulletSpeed);
     }
 
@@ -23,7 +26,9 @@ public class Bullet : MonoBehaviour
         TryDamage(collision);
 
         Debug.Log("Bullet hit " + collision.gameObject.name);
-        Destroy(gameObject);    
+        spriteRenderer.enabled = false;
+        rb.AddForce(velocity * -1);
+        Destroy(gameObject, 1);    
     }
 
     private void TryDamage(Collider2D collision)
