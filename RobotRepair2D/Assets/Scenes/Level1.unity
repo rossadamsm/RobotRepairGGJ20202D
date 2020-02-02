@@ -15918,6 +15918,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4951c3a0c74a23941a5e870dd8a0eec9, type: 2}
   - {fileID: 11400000, guid: 22a52db4ee0d9b349872f09c695afe04, type: 2}
   - {fileID: 11400000, guid: 87a402d1d7d4c8d4393b95051de5543c, type: 2}
+  powerupEveryXLevels: 2
+  spawnPer: 2
 --- !u!4 &493778369
 Transform:
   m_ObjectHideFlags: 0
@@ -38750,6 +38752,7 @@ MonoBehaviour:
   moveSpeed: 100
   firingDelay: 0.5
   firingPivot: {fileID: 895636003}
+  doubleDamageActive: 0
   PlayerDisabled: 0
 --- !u!4 &1193195105
 Transform:
@@ -38970,6 +38973,7 @@ MonoBehaviour:
   moveSpeed: 100
   firingDelay: 0.5
   firingPivot: {fileID: 431297162}
+  doubleDamageActive: 0
   PlayerDisabled: 0
 --- !u!4 &1255889313
 Transform:
