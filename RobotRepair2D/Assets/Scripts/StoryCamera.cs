@@ -18,7 +18,7 @@ public class StoryCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(photos[target].transform.position.x, photos[target].transform.position.y, -10f), 0.1f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(photos[target].transform.position.x, photos[target].transform.position.y, -10f), 0.05f);
 
         if (Input.GetMouseButtonDown(0))
 		{
