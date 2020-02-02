@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   LevelNo: 3
-  NoEnemiesToSpawn: 4
+  NoEnemiesToSpawn: 2

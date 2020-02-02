@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level8
   m_EditorClassIdentifier: 
   LevelNo: 8
-  NoEnemiesToSpawn: 18
+  NoEnemiesToSpawn: 15

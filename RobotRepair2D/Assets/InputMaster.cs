@@ -53,7 +53,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -64,7 +64,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -75,7 +75,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -86,7 +86,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -97,7 +97,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Joystick>/stick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Looking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -119,7 +119,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Looking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -130,7 +130,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Looking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -141,7 +141,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Looking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -152,7 +152,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Looking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -162,11 +162,21 @@ public class @InputMaster : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""PS4"",
-            ""bindingGroup"": ""PS4"",
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
                     ""devicePath"": ""<DualShock4GampadiOS>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<AndroidGamepadXboxController>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -264,13 +274,13 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public Player1Actions @Player1 => new Player1Actions(this);
-    private int m_PS4SchemeIndex = -1;
-    public InputControlScheme PS4Scheme
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
     {
         get
         {
-            if (m_PS4SchemeIndex == -1) m_PS4SchemeIndex = asset.FindControlSchemeIndex("PS4");
-            return asset.controlSchemes[m_PS4SchemeIndex];
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
     public interface IPlayer1Actions

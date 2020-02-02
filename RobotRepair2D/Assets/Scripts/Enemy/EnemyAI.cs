@@ -78,4 +78,9 @@ public class EnemyAI : MonoBehaviour
             target = validPlayers[closestDistanceIndex].gameObject;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level10
   m_EditorClassIdentifier: 
   LevelNo: 10
-  NoEnemiesToSpawn: 24
+  NoEnemiesToSpawn: 21
