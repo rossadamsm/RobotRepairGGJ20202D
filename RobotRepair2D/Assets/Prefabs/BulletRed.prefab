@@ -63,6 +63,16 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.key1.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6502461053723627154, guid: 77efc73521269dc41a9f2346e4f3acfb,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502461053723627154, guid: 77efc73521269dc41a9f2346e4f3acfb,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7211831881790152925, guid: 77efc73521269dc41a9f2346e4f3acfb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -118,5 +128,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8365458878502917596, guid: 77efc73521269dc41a9f2346e4f3acfb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c333b6db51d971c428a83329416302ef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77efc73521269dc41a9f2346e4f3acfb, type: 3}
