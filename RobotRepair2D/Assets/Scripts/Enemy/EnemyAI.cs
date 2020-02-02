@@ -58,12 +58,38 @@ public class EnemyAI : MonoBehaviour
 
     void FindPlayers()
     {
+        float closestDistance = 999999f;
+        int closestDistanceIndex = -1;
+
+        //Target towers first
+        List<Tower> towers = FindObjectsOfType<Tower>().ToList();
+        if (towers.Count > 0) {
+            //Find the closest tower and set target to it
+
+            for (int i = 0; i < towers.Count; i++) {
+                float curDist = Vector3.Distance(transform.position, towers[i].transform.position);
+                if(curDist < closestDistance)
+                {
+                    closestDistance = curDist;
+                    closestDistanceIndex = i;
+                }
+
+                if (closestDistanceIndex != -1)
+                {
+                    target = towers[closestDistanceIndex].gameObject;
+                    //Exit early if we were able to target a tower
+                    return;
+                }
+            }
+        }
+        
+
         //Made it so it only considers nondisabled players as valid targets (prevents it just sitting on an already disabled player)
         List<PlayerController> validPlayers = new List<PlayerController>();
         validPlayers = players.Where(x => !x.PlayerDisabled).ToList();
 
-        float closestDistance = 999999f;
-        int closestDistanceIndex = -1;
+        closestDistance = 99999f;
+        closestDistanceIndex = -1;
         for (int i = 0; i < validPlayers.Count; i++)
         {
             float curDist = Vector3.Distance(transform.position, validPlayers[i].transform.position);
