@@ -6,12 +6,15 @@ public class StoryCamera : MonoBehaviour
 {
     public List<GameObject> photos;
 
+    private AudioSource[] audioSources;
+
     public GameObject transition;
 
     private int target;
     // Start is called before the first frame update
     void Start()
     {
+        audioSources = GetComponents<AudioSource>();
         target = 0;
     }
 
@@ -25,7 +28,8 @@ public class StoryCamera : MonoBehaviour
             if (target < photos.Count - 1)
 			{
                 target += 1;
-			}
+                audioSources[1].Play();
+            }
             else
 			{
                 if (GameObject.FindGameObjectsWithTag("Transition").Length == 0)
@@ -33,8 +37,9 @@ public class StoryCamera : MonoBehaviour
                     //Instantiate Transition;
                     GameObject newTrans = Instantiate(transition, new Vector3(transform.position.x, transform.position.y, 0f), Quaternion.identity);
                     Transition newTransTrans = newTrans.GetComponent<Transition>();
-                    newTransTrans.destinationScene = "Story";
+                    newTransTrans.destinationScene = "Menu";
                     newTransTrans.fadeIn = true;
+                    audioSources[1].Play();
 				}
 			}
 		}
