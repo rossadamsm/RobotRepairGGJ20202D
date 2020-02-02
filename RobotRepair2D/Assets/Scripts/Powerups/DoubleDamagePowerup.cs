@@ -12,30 +12,43 @@ public class DoubleDamagePowerup : MonoBehaviour
     public void ApplyEffect()
     {
         //Double the damage
-        Bullet b = target.GetComponent<Bullet>();
-        startDamage = b.damage;
-        b.AddDamage(b.damage);
-        applied = true;
+        PlayerController p = target.GetComponent<PlayerController>();
+        if (p != null)
+        {
+            applied = true;
+            p.doubleDamageActive = true;
+            //Move away from the game space, will be destroyed in 10s
+            gameObject.transform.SetPositionAndRotation(new Vector3(1000, 1000), Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Cant find bullet");
+        }
     }
 
-    void FixedUpdate() {
-        if (applied) {
+    void FixedUpdate()
+    {
+        if (applied)
+        {
             lifetime -= Time.fixedDeltaTime;
-            if (lifetime <= 0) {
+            if (lifetime <= 0)
+            {
                 EndEffect();
             }
         }
     }
 
-    void EndEffect() {
-        Bullet b = target.GetComponent<Bullet>();
-        //Return damage to normal
-        b.AddDamage(-startDamage);
+    void EndEffect()
+    {
+        PlayerController p = target.GetComponent<PlayerController>();
+        p.doubleDamageActive = false;
+        Destroy(gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 9) {
+        if (collision.gameObject.layer == 9)
+        {
             target = collision.gameObject;
             ApplyEffect();
         }

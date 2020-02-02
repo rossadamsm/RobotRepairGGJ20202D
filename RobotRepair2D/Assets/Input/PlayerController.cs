@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     float firingDelayTimer = 0;
     private Animator animator;
 
+    public bool doubleDamageActive = false;
+
     [HideInInspector] public bool PlayerDisabled = false;
 
     private void Awake()
@@ -135,6 +137,9 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(gameObject.name + " fired");
         Bullet bullet = Instantiate<Bullet>(bulletPrefab, firingPivot.position, Quaternion.identity);
+        if (doubleDamageActive) {
+            bullet.AddDamage(bullet.damage);
+        }
         bullet.tag = gameObject.tag;
         bullet.Shoot(firingPivot.right);
         canFire = false;

@@ -17,14 +17,15 @@ public class Tower : MonoBehaviour, IDamagable
 
     public bool isActivated = false;
 
-    public int hp = 5;
+    public int hp = 10;
 
     [SerializeField] private Slider healthBar;
 
     // Update is called once per frame
     void Update()
     {
-        if (isActivated) {
+        if (isActivated)
+        {
             if (cooldown <= 0 && targettedEnemy != null)
             {
                 cooldown = attackspeed;
@@ -104,7 +105,8 @@ public class Tower : MonoBehaviour, IDamagable
     {
         hp -= amount;
         healthBar.value = hp;
-        if (hp <= 0) {
+        if (hp <= 0)
+        {
             Destroy(gameObject);
         }
     }
