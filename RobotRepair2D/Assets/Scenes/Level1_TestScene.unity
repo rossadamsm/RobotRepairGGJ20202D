@@ -11015,9 +11015,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 54195c68d042aa945babc0980879747d, type: 3}
   CollectScrapSounds:
   - {fileID: 8300000, guid: f4bf196fb9c29c749963b95caa40d333, type: 3}
+  ShootingSounds:
+  - {fileID: 8300000, guid: d77168d6c63364a4fa6628db5756922a, type: 3}
   RepairSounds:
   - {fileID: 8300000, guid: 114b3209c0904be43b1cdd6e6e1243da, type: 3}
-  RobotDisabledSounds: []
+  RobotDisabledSounds:
+  - {fileID: 8300000, guid: c1e4f75d35cad7e478703e1de3642c08, type: 3}
 --- !u!1 &603564434
 GameObject:
   m_ObjectHideFlags: 0
@@ -13727,6 +13730,10 @@ MonoBehaviour:
   damagedClip: {fileID: 8300000, guid: 54195c68d042aa945babc0980879747d, type: 3}
   repairedClip: {fileID: 8300000, guid: 114b3209c0904be43b1cdd6e6e1243da, type: 3}
   currentHealth: 0
+  playerSprite: {fileID: 0}
+  healthBar: {fileID: 0}
+  damagedSprite: {fileID: 0}
+  originalSprite: {fileID: 0}
 --- !u!61 &1193195102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13961,6 +13968,10 @@ MonoBehaviour:
   damagedClip: {fileID: 8300000, guid: 54195c68d042aa945babc0980879747d, type: 3}
   repairedClip: {fileID: 8300000, guid: 114b3209c0904be43b1cdd6e6e1243da, type: 3}
   currentHealth: 0
+  playerSprite: {fileID: 0}
+  healthBar: {fileID: 0}
+  damagedSprite: {fileID: 0}
+  originalSprite: {fileID: 0}
 --- !u!50 &1255889311
 Rigidbody2D:
   serializedVersion: 4

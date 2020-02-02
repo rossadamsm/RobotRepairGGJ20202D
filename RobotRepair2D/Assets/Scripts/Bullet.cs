@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
 
         Debug.Log("Bullet hit " + collision.gameObject.name);
         spriteRenderer.enabled = false;
-        rb.AddForce(velocity * -1);
+        rb.velocity = Vector2.zero;
         Destroy(gameObject, 1);    
     }
 
